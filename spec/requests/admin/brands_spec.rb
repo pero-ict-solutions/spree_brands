@@ -32,4 +32,13 @@ describe "Admin::Brands" do
     page.should have_content "New Brand 99"
   end
 
+  it "delete a Brand", :js => true do
+    brand = create(:brand)
+    visit spree.admin_path
+    click_link "Brands"
+    click_link "Delete"
+    page.should have_content "Brand \"#{brand.name}\" has been successfully deleted"
+    page.should_not have_content brand.name
+  end
+
 end
