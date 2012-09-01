@@ -20,6 +20,7 @@
       <td><%= brand.name %></td>
       <td><%= brand.description %></td>
       <td class="actions" data-hook="admin_brands_index_row_actions">
+        <%= link_to_edit brand %>
         <%= link_to_delete brand %>
       </td>
     </tr>

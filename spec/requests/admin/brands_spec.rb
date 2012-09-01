@@ -21,4 +21,15 @@ describe "Admin::Brands" do
     page.should have_content "My Brands description"
   end
 
+  it "edit a Brand" do
+    brand = create(:brand)
+    visit spree.admin_path
+    click_link "Brands"
+    click_link "Edit"
+    fill_in "Name", :with => "New Brand 99"
+    click_button "Update"
+    page.should have_content "Brand \"New Brand 99\" has been successfully updated"
+    page.should have_content "New Brand 99"
+  end
+
 end
