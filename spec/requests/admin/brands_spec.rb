@@ -32,4 +32,15 @@ describe "Admin::Brands" do
     page.should have_content "New Brand 99"
   end
 
+  it "allows for uploading an image" do
+    brand = create(:brand)
+    visit spree.admin_path
+    click_link "Brands"
+    click_link "Edit"
+    absolute_path = Rails.root + "../../spec/support/logo-pero-ict.png"
+    attach_file('logo_attachment', absolute_path)
+    click_button "Update"
+    page.should have_content("successfully created!")
+  end
+
 end
