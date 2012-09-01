@@ -1,0 +1,27 @@
+<div class='toolbar'>
+  <ul class='actions'>
+    <li id="new_brand_link">
+      <%= button_link_to "Add Brand", new_object_url, {:icon => 'add'} %>
+    </li>
+  </ul>
+  <br class='clear' />
+</div>
+
+<h1> Brands </h1>
+
+<table class="index" id="brands">
+  <tr data-hook="admin_brands_index_headers">
+    <th>name</th>
+    <th>description</th>
+    <th data-hook="admin_brands_index_headers_actions"></th>
+  </tr>
+  <% @brands.each do |brand| -%>
+    <tr>
+      <td><%= brand.name %></td>
+      <td><%= brand.description %></td>
+      <td class="actions" data-hook="admin_brands_index_row_actions">
+        <%= link_to_delete brand %>
+      </td>
+    </tr>
+  <% end -%>
+</table>

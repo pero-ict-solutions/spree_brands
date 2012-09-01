@@ -1,0 +1,7 @@
+<h1>Add new Brand</h1>
+<%= render "spree/shared/error_messages", :target => @brand %>
+
+<%= form_for [:admin, @brand] do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+  <%= render :partial => 'spree/admin/shared/new_resource_links' %>
+<% end %>

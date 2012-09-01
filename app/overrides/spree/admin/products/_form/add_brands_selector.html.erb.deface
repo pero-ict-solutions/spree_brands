@@ -1,0 +1,9 @@
+<!-- insert_bottom "[data-hook='admin_product_form_right']" -->
+<h2><%= t(:brand) %></h2>
+<%= f.field_container :brand do %>
+<% end %>
+
+<%= f.field_container :brand do %>
+  <%= f.label :brand_id, t(:brand) %><br />
+  <%= f.collection_select(:brand_id, Spree::Brand.all, :id, :name, { :include_blank => true }, { 'style' => 'width:200px' }) %>
+<% end %>
