@@ -38,9 +38,9 @@ describe "Admin::Brands" do
     click_link "Brands"
     click_link "Edit"
     absolute_path = Rails.root + "../../spec/support/logo-pero-ict.png"
-    attach_file('logo_attachment', absolute_path)
+    attach_file('brand_logo', absolute_path)
     click_button "Update"
-    page.should have_content("successfully created!")
+    page.should have_content("successfully updated!")
   end
 
 end
