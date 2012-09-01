@@ -11,7 +11,10 @@ require 'ffaker'
 Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each { |f| require f }
 
 # Requires factories defined in spree_core
+require 'database_cleaner'
 require 'spree/core/testing_support/factories'
+require 'spree/core/testing_support/env'
+require 'spree/core/testing_support/controller_requests'
 require 'spree/core/url_helpers'
 
 #require the custom factories!
@@ -46,5 +49,25 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
+  config.before(:each) do
+    if example.metadata[:js]
+      DatabaseCleaner.strategy = :truncation, { :except => ['spree_countries', 'spree_zones', 'spree_zone_members', 'spree_states', 'spree_roles'] }
+    else
+      DatabaseCleaner.strategy = :transaction
+    end
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+
+  config.include FactoryGirl::Syntax::Methods
+  config.include Spree::Core::UrlHelpers
+  config.include Spree::Core::TestingSupport::ControllerRequests
+
 end
