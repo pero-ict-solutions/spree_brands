@@ -1,0 +1,2 @@
+<!-- insert_before "[data-hook='admin_products_index_header_actions']" -->
+<th><%= sort_link @search,:brand, t(:brand), { :default_order => "desc" }, {:title => 'admin_products_listing_brand_title'} %></th>

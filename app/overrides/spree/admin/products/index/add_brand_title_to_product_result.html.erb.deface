@@ -1,0 +1,2 @@
+<!-- insert_before "[data-hook='admin_products_index_row_actions']" -->
+<td><%= product.brand.try(:name) %></td>
