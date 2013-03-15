@@ -3,6 +3,6 @@ class Spree::BrandsController < Spree::BaseController
 
   def show
     @brand = Spree::Brand.find_by_url(params[:id])
-    @products = @brand.products
+    @products = @brand.products.active
   end
 end
