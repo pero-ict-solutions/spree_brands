@@ -43,4 +43,15 @@ describe "Admin::Brands" do
     page.should have_content("successfully updated!")
   end
 
+  it "can disable a brand" do
+    brand = create(:brand)
+    visit spree.admin_path
+    click_link "Brands"
+    click_link "Edit"
+    uncheck "Enable"
+    click_button "Update"
+    page.should have_content("successfully updated!")
+    Spree::Brand.active.should_not include(brand)
+  end
+
 end

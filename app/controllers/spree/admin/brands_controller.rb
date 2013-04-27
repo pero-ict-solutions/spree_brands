@@ -5,7 +5,6 @@ module Spree
       def find_resource
         Spree::Brand.find_by_url!(params[:id])
       end
-
     end
   end
 end
