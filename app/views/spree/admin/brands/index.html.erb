@@ -13,12 +13,14 @@
   <tr data-hook="admin_brands_index_headers">
     <th>name</th>
     <th>description</th>
+    <th>enabled</th>
     <th data-hook="admin_brands_index_headers_actions"></th>
   </tr>
   <% @brands.each do |brand| -%>
     <tr>
       <td><%= brand.name %></td>
       <td><%= brand.description %></td>
+      <td><%= brand.enabled %></td>
       <td class="actions" data-hook="admin_brands_index_row_actions">
         <%= link_to_edit brand %>
         <%= link_to_delete brand %>
