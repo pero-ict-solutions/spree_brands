@@ -17,7 +17,7 @@
     <th data-hook="admin_brands_index_headers_actions"></th>
   </tr>
   <% @brands.each do |brand| -%>
-    <tr>
+    <tr data-hook="admin_brands_index_row">
       <td><%= brand.name %></td>
       <td><%= brand.description %></td>
       <td><%= brand.enabled %></td>
