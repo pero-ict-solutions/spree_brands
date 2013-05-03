@@ -13,4 +13,18 @@ class Spree::Brand < ActiveRecord::Base
     url
   end
 
+  def brand_filter
+    self.id.to_s
+  end
+
+  def to_filter_params(params = {})
+    filter_params = params["brands"].try(:dup) || []
+    if(filter_params.include?(brand_filter))
+      filter_params.delete(brand_filter)
+    else
+      filter_params << (brand_filter)
+    end
+    filter_params.map {|f| "brands[]=#{f}"}.join("&")
+  end
+
 end
