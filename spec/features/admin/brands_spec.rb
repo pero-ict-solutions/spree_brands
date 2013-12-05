@@ -2,8 +2,6 @@ require 'spec_helper'
 
 describe "Admin::Brands" do
 
-  stub_authorization!
-
   it "adds a Brand tab to the admin menu" do
     visit spree.admin_path
     within(:css, '#admin-menu') { page.find_link("Brands")['/admin/brands'] }

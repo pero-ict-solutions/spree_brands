@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe "Admin Product Brands" do
-  stub_authorization!
 
   let!(:brand) { create(:brand) }
   let(:product) { create(:product) }
